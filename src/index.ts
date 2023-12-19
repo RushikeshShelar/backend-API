@@ -22,13 +22,16 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const server = http.createServer(app);
+
 const PORT = process.env.PORT || 8080;
+
 server.listen(PORT, () => {
     console.log('Server Running on http://localhost:8080');
 });
 
 const MONGO_URL = process.env.MONGODB_URL;
 mongoose.Promise = Promise;
+
 mongoose.connect(MONGO_URL)
     .then(() => console.log('MongoDB Connected'))
     .catch(err => console.log(err));
